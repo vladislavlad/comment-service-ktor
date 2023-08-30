@@ -6,4 +6,8 @@ import kotlinx.serialization.Serializable
 data class Comment(
     val id: Long,
     val text: String,
+    val author: String,
+    val target: String,
+    val targetId: Long,
+    val replyTo: Long,
 )

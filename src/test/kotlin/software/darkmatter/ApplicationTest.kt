@@ -5,13 +5,16 @@ import io.ktor.client.statement.*
 import io.ktor.server.testing.*
 import kotlin.test.*
 import io.ktor.http.*
-import software.darkmatter.comment.configureRouting
+import io.ktor.util.*
+import software.darkmatter.comment.service.api.configureRouting
 
 class ApplicationTest {
+
     @Test
     fun testRoot() = testApplication {
         application {
             configureRouting()
+            attributes.put(AttributeKey("testMode"), true)
         }
         client.get("/").apply {
             assertEquals(HttpStatusCode.OK, status)
