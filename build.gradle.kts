@@ -5,13 +5,13 @@ val postgres_version: String by project
 val h2_version: String by project
 
 plugins {
-    kotlin("jvm") version "1.9.0"
-    id("io.ktor.plugin") version "2.3.3"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
+    kotlin("jvm") version "1.9.21"
+    id("io.ktor.plugin") version "2.3.7"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.21"
 }
 
 group = "software.darkmatter"
-version = "0.0.1"
+version = "0.0.2"
 application {
     mainClass.set("software.darkmatter.comment.ApplicationKt")
 
@@ -27,7 +27,7 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
-    implementation("io.insert-koin:koin-ktor:3.4.3")
+    implementation("io.insert-koin:koin-ktor:3.5.0")
     implementation("org.postgresql:postgresql:$postgres_version")
     implementation("com.h2database:h2:$h2_version")
 //    implementation("io.ktor:ktor-server-swagger:$ktor_version")
