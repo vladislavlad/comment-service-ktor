@@ -7,7 +7,7 @@ import io.ktor.server.auth.jwt.*
 fun Application.configureSecurity() {
 
     authentication {
-        jwt {
+        jwt("auth-jwt") {
             val jwtAudience = this@configureSecurity.environment.config.property("jwt.audience").getString()
             // realm = this@configureSecurity.environment.config.property("jwt.realm").getString()
 
@@ -18,6 +18,7 @@ fun Application.configureSecurity() {
 //                    .withIssuer(this@configureSecurity.environment.config.property("jwt.issuer").getString())
 //                    .build()
 //            )
+
             validate { credential ->
                 if (credential.payload.audience.contains(jwtAudience)) JWTPrincipal(credential.payload) else null
             }

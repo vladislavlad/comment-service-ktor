@@ -4,12 +4,12 @@ import com.typesafe.config.ConfigFactory
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import io.ktor.server.plugins.callloging.*
+import io.ktor.server.plugins.calllogging.*
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import org.koin.ktor.plugin.Koin
-import software.darkmatter.comment.service.api.configureDatabases
+import software.darkmatter.comment.service.api.configureCommentRouting
 import software.darkmatter.comment.service.api.configureRouting
 import software.darkmatter.comment.service.comment.CommentService
 import software.darkmatter.comment.service.comment.CommentServiceImpl
@@ -24,9 +24,9 @@ fun main() {
 
 fun Application.module() {
     configureSerialization()
-    configureDatabases()
 //    configureSecurity()
     configureRouting()
+    configureCommentRouting()
     install(CallLogging)
 
     val db = connectToPostgres()

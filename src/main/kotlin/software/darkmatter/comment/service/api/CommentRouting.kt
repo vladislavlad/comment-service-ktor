@@ -10,7 +10,7 @@ import software.darkmatter.comment.service.api.dto.CommentCreateDto
 import software.darkmatter.comment.service.api.dto.CommentUpdateDto
 import software.darkmatter.comment.service.comment.CommentService
 
-fun Application.configureDatabases() {
+fun Application.configureCommentRouting() {
 
     val commentService by inject<CommentService>()
 
@@ -26,7 +26,7 @@ fun Application.configureDatabases() {
         }
 
         get("/comments/{id}") {
-            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid ID")
+            val id = call.parameters["id"]?.toInt() ?: throw IllegalArgumentException("Invalid 'id'")
             try {
                 val comment = commentService.getById(id)
                 call.respond(HttpStatusCode.OK, comment)
