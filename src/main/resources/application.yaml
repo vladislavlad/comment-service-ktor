@@ -1,0 +1,13 @@
+ktor:
+  application:
+    modules:
+      - software.darkmatter.comment.ApplicationKt.module
+  deployment:
+    port: 8080
+db:
+  url: jdbc:postgresql://localhost:5432/comments
+  user: comments
+  password: comments
+jwt:
+  domain: "software.darkmatter.accounts"
+  audience: "comment-service"
